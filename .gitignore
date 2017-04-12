@@ -250,3 +250,8 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+
+# Misc
+.DS_Store
+wwwroot/**/*.gz
+wwwroot/**/*.br

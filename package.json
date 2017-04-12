@@ -1,0 +1,30 @@
+{
+  "name": "aspnet-resource-manifest-sample",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karl-sjogren/aspnet-resource-manifest-sample.git"
+  },
+  "author": "Karl-Johan Sjögren",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/karl-sjogren/aspnet-resource-manifest-sample/issues"
+  },
+  "homepage": "https://github.com/karl-sjogren/aspnet-resource-manifest-sample#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-brotli": "^1.2.0",
+    "gulp-clone": "^1.0.0",
+    "gulp-gzip": "^1.4.0",
+    "gulp-rev": "^7.1.2",
+    "gulp-uglify": "^2.1.2",
+    "merge-stream": "^1.0.1"
+  },
+  "dependencies": {
+    "gulp-less": "^3.3.0"
+  }
+}
