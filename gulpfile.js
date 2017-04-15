@@ -40,7 +40,7 @@ var preEncodeResources = function(baseStream, outPath) {
 
   streams.push(baseStream
       .pipe(clone())
-      .pipe(gzip({ append: true }))
+      .pipe(gzip({ append: true, gzipOptions: { level: 9 } }))
       .pipe(gulp.dest(outPath)));
 
   var MODE_GENERIC = 0,
