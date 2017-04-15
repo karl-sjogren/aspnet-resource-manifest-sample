@@ -35,9 +35,13 @@ gulp.task('scripts', function () {
   return preEncodeResources(base, 'wwwroot/js');
 });
 
+// Encodes the supplied stream using gzip and brotli and then
+// appends the resulting filename into rev-manifest.json.
 var preEncodeResources = function(baseStream, outPath) {
   var streams = [];
 
+  // Clones the stream and compresses it using gzip with
+  // level 9 (maximum) compression
   streams.push(baseStream
       .pipe(clone())
       .pipe(gzip({ append: true, gzipOptions: { level: 9 } }))
@@ -46,6 +50,8 @@ var preEncodeResources = function(baseStream, outPath) {
   var MODE_GENERIC = 0,
       MODE_TEXT = 1;
 
+  // Clones the stream and compresses it using brotli with
+  // level 11 (maximum) compression
   streams.push(baseStream
       .pipe(clone())
       .pipe(brotli.compress({
@@ -56,11 +62,13 @@ var preEncodeResources = function(baseStream, outPath) {
       }))
       .pipe(gulp.dest(outPath)));
 
+  // Writes the reved filename into the manifestfile
   streams.push(baseStream.pipe(rev.manifest('wwwroot/rev-manifest.json', {
       base: 'wwwroot/',
       merge: true
     }))
     .pipe(gulp.dest('wwwroot/')));
 
+  // Merge the resulting streams so that we can return properly
   return merge.apply(null, streams);
 };
